@@ -6,7 +6,10 @@ namespace TennisKataTDD
     public class Tennis
     {
         private int _firstPlayScoreTimes;
+        private readonly string _firstPlayerName;
+
         private int _secondPlayScoreTimes;
+        private readonly string _secondPlayerName;
 
         private readonly Dictionary<int, string> _scoreLookup = new Dictionary<int, string>()
         {
@@ -16,9 +19,6 @@ namespace TennisKataTDD
             {3, "Forty" }
         };
 
-        private string _firstPlayerName;
-        private string _secondPlayerName;
-
         public Tennis(string firstPlayerName, string secondPlayerName)
         {
             _firstPlayerName = firstPlayerName;
@@ -27,34 +27,37 @@ namespace TennisKataTDD
 
         public string GetScore()
         {
-            if (IsDifferentScore())
-            {
-                if (IsReadyForGamePoint())
-                {
-                    return $"{AdvantagePlayerName()} Adv";
-                }
-
-                if (_firstPlayScoreTimes >= 4 
-                    && Math.Abs(_firstPlayScoreTimes - _secondPlayScoreTimes) > 1)
-                {
-                    return $"{AdvantagePlayerName()} Win";
-                }
-
-                if (_secondPlayScoreTimes >= 4
-                    && Math.Abs(_secondPlayScoreTimes - _firstPlayScoreTimes) > 1)
-                {
-                    return $"{AdvantagePlayerName()} Win";
-                }
-
-                return LookupScore();  
-            }
-
             if (IsDeuce())
             {
-                return Deuce();
+                return DeuceScore();
             }
 
-            return SameScore();
+            if (IsReadyForGamePoint())
+            {
+                return AdvScore();
+            }
+
+            if (IsWon())
+            {
+                return WinScore();
+            }
+
+            return IsDifferentScore() ? LookupScore() : SameScore();
+        }
+
+        private string AdvScore()
+        {
+            return $"{AdvantagePlayerName()} Adv";
+        }
+
+        private string WinScore()
+        {
+            return $"{AdvantagePlayerName()} Win";
+        }
+
+        private bool IsWon()
+        {
+            return (_firstPlayScoreTimes >= 4 || _secondPlayScoreTimes >= 4) && Math.Abs(_firstPlayScoreTimes - _secondPlayScoreTimes) > 1;
         }
 
         private bool IsReadyForGamePoint()
@@ -67,9 +70,9 @@ namespace TennisKataTDD
             return _firstPlayScoreTimes > _secondPlayScoreTimes ? _firstPlayerName : _secondPlayerName;
         }
 
-        private string Deuce()
+        private string DeuceScore()
         {
-            return "Deuce";
+            return "DeuceScore";
         }
 
         private bool IsDeuce()
