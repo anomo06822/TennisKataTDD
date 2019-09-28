@@ -18,6 +18,14 @@ namespace TennisKata.Tests
             ScoreShouldBe("Love All");
         }
 
+        [Fact]
+        public void fifteen_Love()
+        {
+            _tennis.FirstPlayerScore(1);
+
+            ScoreShouldBe("Fifteen Love");
+        }
+
         private void ScoreShouldBe(string actual)
         {
             _tennis.GetScore().Should().Be(actual);
