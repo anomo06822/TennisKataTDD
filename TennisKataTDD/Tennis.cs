@@ -29,9 +29,15 @@ namespace TennisKataTDD
         {
             if (IsDifferentScore())
             {
-                if (IsAdvantage())
+                if (IsReadyForGamePoint())
                 {
                     return $"{AdvantagePlayerName()} Adv";
+                }
+
+                if (_firstPlayScoreTimes >= 4 
+                    && Math.Abs(_firstPlayScoreTimes - _secondPlayScoreTimes) > 1)
+                {
+                    return $"{AdvantagePlayerName()} Win";
                 }
 
                 return LookupScore();  
@@ -45,7 +51,7 @@ namespace TennisKataTDD
             return SameScore();
         }
 
-        private bool IsAdvantage()
+        private bool IsReadyForGamePoint()
         {
             return (_firstPlayScoreTimes > 3 || _secondPlayScoreTimes > 3) && Math.Abs(_firstPlayScoreTimes - _secondPlayScoreTimes) == 1;
         }
