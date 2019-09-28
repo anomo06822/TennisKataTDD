@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace TennisKataTDD
 {
@@ -28,14 +29,9 @@ namespace TennisKataTDD
         {
             if (IsDifferentScore())
             {
-                if (_firstPlayScoreTimes > 3 && _firstPlayScoreTimes - _secondPlayScoreTimes == 1)
+                if (IsAdvantage())
                 {
-                    return $"{_firstPlayerName} Adv";
-                }
-
-                if (_secondPlayScoreTimes > 3 && _secondPlayScoreTimes - _firstPlayScoreTimes == 1)
-                {
-                    return $"{_secondPlayerName} Adv";
+                    return $"{AdvantagePlayerName()} Adv";
                 }
 
                 return LookupScore();  
@@ -47,6 +43,16 @@ namespace TennisKataTDD
             }
 
             return SameScore();
+        }
+
+        private bool IsAdvantage()
+        {
+            return (_firstPlayScoreTimes > 3 || _secondPlayScoreTimes > 3) && Math.Abs(_firstPlayScoreTimes - _secondPlayScoreTimes) == 1;
+        }
+
+        private string AdvantagePlayerName()
+        {
+            return _firstPlayScoreTimes > _secondPlayScoreTimes ? _firstPlayerName : _secondPlayerName;
         }
 
         private string Deuce()
