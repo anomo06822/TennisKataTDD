@@ -40,6 +40,14 @@ namespace TennisKata.Tests
             ScoreShouldBe("Forty Love");
         }
 
+        [Fact]
+        public void Love_Fifteen()
+        {
+            GivenSecondPlayerScore(1);
+            ScoreShouldBe("Love Fifteen");
+        }
+
+
         private void GivenFirstPlayerScore(int times)
         {
             for (var i = 0; i < times; i++)
@@ -47,6 +55,15 @@ namespace TennisKata.Tests
                 _tennis.FirstPlayerScore();
             }
         }
+
+        private void GivenSecondPlayerScore(int times)
+        {
+            for (var i = 0; i < times; i++)
+            {
+                _tennis.SecondPlayerScore();
+            }
+        }
+
 
         private void ScoreShouldBe(string actual)
         {
