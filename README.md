@@ -2,6 +2,8 @@
 TDD 學習資源 :
 * [Kata](http://codingdojo.org/kata/Tennis/)
 * [91 極速開發](https://www.youtube.com/watch?v=KX67BvNyiJE)
+* [Teddy 從領域驅動設計看Tennis Kata（上）](http://teddy-chen-tw.blogspot.com/2019/02/tennis-kata.html)
+* [Teddy 從領域驅動設計看Tennis Kata（下）](http://teddy-chen-tw.blogspot.com/2019/02/tennis-kata_26.html)
 
 # Practice#1 2019/9/28
 第一階段跑完 TDD 的 TennisKata, 大概發現了幾個瑕疵:
