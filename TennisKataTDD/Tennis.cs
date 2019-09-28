@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace TennisKata
 {
@@ -28,19 +29,11 @@ namespace TennisKata
         {
             if (IsScoreDifferent())
             {
-                if (_firstPlayerScoreTimes > 3)
+                if (IsReadyForGamePoint())
                 {
-                    if (_firstPlayerScoreTimes - _secondPlayerScoreTimes == 1)
+                    if (IsAdv())
                     {
-                        return $"{_firstPlayerName}_Adv";
-                    }
-                }
-
-                if (_secondPlayerScoreTimes > 3)
-                {
-                    if (_secondPlayerScoreTimes - _firstPlayerScoreTimes == 1)
-                    {
-                        return $"{_secondPlayerName}_Adv";
+                        return $"{AdvPlayer()}_Adv";
                     }
                 }
 
@@ -53,6 +46,22 @@ namespace TennisKata
             }
 
             return SameScore();
+        }
+
+        private bool IsReadyForGamePoint()
+        {
+            return _firstPlayerScoreTimes > 3 || _secondPlayerScoreTimes > 3;
+        }
+
+        private bool IsAdv()
+        {
+            return Math.Abs(_firstPlayerScoreTimes - _secondPlayerScoreTimes) == 1;
+        }
+
+        private string AdvPlayer()
+        {
+            return _firstPlayerScoreTimes > _secondPlayerScoreTimes 
+                ? _firstPlayerName : _secondPlayerName;
         }
 
         private bool IsDeuce()
