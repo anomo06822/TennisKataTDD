@@ -16,10 +16,12 @@ namespace TennisKataTDD
         };
 
         private string _firstPlayerName;
+        private string _secondPlayerName;
 
-        public Tennis(string firstPlayerName)
+        public Tennis(string firstPlayerName, string secondPlayerName)
         {
             _firstPlayerName = firstPlayerName;
+            _secondPlayerName = secondPlayerName;
         }
 
         public string GetScore()
@@ -29,6 +31,11 @@ namespace TennisKataTDD
                 if (_firstPlayScoreTimes > 3 && _firstPlayScoreTimes - _secondPlayScoreTimes == 1)
                 {
                     return $"{_firstPlayerName} Adv";
+                }
+
+                if (_secondPlayScoreTimes > 3 && _secondPlayScoreTimes - _firstPlayScoreTimes == 1)
+                {
+                    return $"{_secondPlayerName} Adv";
                 }
 
                 return LookupScore();  
