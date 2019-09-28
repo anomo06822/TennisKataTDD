@@ -77,6 +77,14 @@ namespace TennisKata.Tests
             ScoreShouldBe("Thirty All");
         }
 
+       [Fact]
+        public void Deuce()
+        {
+            GivenFirstPlayerScore(3);
+            GivenSecondPlayerScore(3);
+            ScoreShouldBe("Deuce");    
+        }
+
 
         private void GivenFirstPlayerScore(int times)
         {
