@@ -21,7 +21,7 @@ namespace TennisKataTDD
                 return $"{scoreLookup[_firstPlayScoreTimes]} Love";  
             }
 
-            if (_secondPlayScoreTimes == 1)
+            if (_secondPlayScoreTimes > 0)
             {
                 return $"Love {scoreLookup[_secondPlayScoreTimes]}";
             }
