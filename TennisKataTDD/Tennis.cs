@@ -9,6 +9,7 @@ namespace TennisKata
 
         private readonly Dictionary<int, string> _scoreLookup = new Dictionary<int, string>()
         {
+            {0, "Love" },
             {1, "Fifteen"},
             {2, "Thirty" },
             {3, "Forty" }
@@ -16,16 +17,11 @@ namespace TennisKata
 
         public string GetScore()
         {
-            if (_secondPlayerScoreTimes > 0)
+            if (_firstPlayerScoreTimes > 0 || _secondPlayerScoreTimes > 0)
             {
-                return $"Love {_scoreLookup[_secondPlayerScoreTimes]}";
+                return $"{_scoreLookup[_firstPlayerScoreTimes]} {_scoreLookup[_secondPlayerScoreTimes]}";
             }
 
-            if (_firstPlayerScoreTimes > 0)
-            {
-                return $"{_scoreLookup[_firstPlayerScoreTimes]} Love";
-            }
-            
             return "Love All";
         }
 
