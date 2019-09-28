@@ -21,9 +21,18 @@ namespace TennisKata.Tests
         [Fact]
         public void Fifteen_Love()
         {
-            _tennis.FirstPlayerScore(1);
+            _tennis.FirstPlayerScore();
 
             ScoreShouldBe("Fifteen Love");
+        }
+
+        [Fact]
+        public void Thirty_Love()
+        {
+            _tennis.FirstPlayerScore();
+            _tennis.FirstPlayerScore();
+
+            ScoreShouldBe("Thirty Love");
         }
 
         private void ScoreShouldBe(string actual)

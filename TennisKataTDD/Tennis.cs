@@ -6,6 +6,11 @@
 
         public string GetScore()
         {
+            if (_firstPlayerScoreTimes == 2)
+            {
+                return "Thirty Love";
+            }
+
             if (_firstPlayerScoreTimes == 1)
             {
                 return "Fifteen Love";
@@ -14,7 +19,7 @@
             return "Love All";
         }
 
-        public void FirstPlayerScore(int score)
+        public void FirstPlayerScore()
         {
             _firstPlayerScoreTimes++;
         }
