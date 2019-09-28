@@ -1,6 +1,7 @@
 # TennisKataTDD
-
-[Kata](http://codingdojo.org/kata/Tennis/)
+TDD 學習資源 :
+* [Kata](http://codingdojo.org/kata/Tennis/)
+* [91 極速開發](https://www.youtube.com/watch?v=KX67BvNyiJE)
 
 # Practice#1 2019/9/28
 第一階段跑完 TDD 的 TennisKata, 大概發現了幾個瑕疵:
