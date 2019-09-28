@@ -7,23 +7,19 @@ namespace TennisKataTDD
         private int _firstPlayScoreTimes;
         private int _secondPlayScoreTimes;
 
+        private readonly Dictionary<int, string> _scoreLookup = new Dictionary<int, string>()
+        {
+            {0, "Love" },
+            {1, "Fifteen" },
+            {2, "Thirty" },
+            {3, "Forty" }
+        };
+
         public string GetScore()
         {
-            Dictionary<int, string> scoreLookup = new Dictionary<int, string>()
+            if (_firstPlayScoreTimes > 0 || _secondPlayScoreTimes > 0)
             {
-                {1, "Fifteen" },
-                {2, "Thirty" },
-                {3, "Forty" }
-            };
-
-            if (_firstPlayScoreTimes > 0)
-            {
-                return $"{scoreLookup[_firstPlayScoreTimes]} Love";  
-            }
-
-            if (_secondPlayScoreTimes > 0)
-            {
-                return $"Love {scoreLookup[_secondPlayScoreTimes]}";
+                return $"{_scoreLookup[_firstPlayScoreTimes]} {_scoreLookup[_secondPlayScoreTimes]}";  
             }
 
             return "Love All";
