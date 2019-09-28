@@ -22,17 +22,22 @@ namespace TennisKataTDD
                 return LookupScore();  
             }
 
-            if (IsSameScore())
+            if (IsDeuce())
             {
-                if (_firstPlayScoreTimes >= 3)
-                {
-                    return "Deuce";
-                }
-
-                return SameScore();
+                return Deuce();
             }
 
             return SameScore();
+        }
+
+        private string Deuce()
+        {
+            return "Deuce";
+        }
+
+        private bool IsDeuce()
+        {
+            return IsSameScore() && _firstPlayScoreTimes >= 3;
         }
 
         private string SameScore()
