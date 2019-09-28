@@ -19,7 +19,7 @@ namespace TennisKata.Tests
         }
 
         [Fact]
-        public void fifteen_Love()
+        public void Fifteen_Love()
         {
             _tennis.FirstPlayerScore(1);
 
