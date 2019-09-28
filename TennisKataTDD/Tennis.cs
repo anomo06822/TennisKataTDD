@@ -17,17 +17,37 @@ namespace TennisKataTDD
 
         public string GetScore()
         {
-            if (_firstPlayScoreTimes != _secondPlayScoreTimes)
+            if (IsDifferentScore())
             {
-                return $"{_scoreLookup[_firstPlayScoreTimes]} {_scoreLookup[_secondPlayScoreTimes]}";  
+                return LookupScore();  
             }
 
-            if (_firstPlayScoreTimes == _secondPlayScoreTimes)
+            if (IsSameScore())
             {
-                return $"{_scoreLookup[_firstPlayScoreTimes]} All";
+                return SameScore();
             }
 
-            return "Love All";
+            return SameScore();
+        }
+
+        private string SameScore()
+        {
+            return $"{_scoreLookup[_firstPlayScoreTimes]} All";
+        }
+
+        private string LookupScore()
+        {
+            return $"{_scoreLookup[_firstPlayScoreTimes]} {_scoreLookup[_secondPlayScoreTimes]}";
+        }
+
+        private bool IsSameScore()
+        {
+            return _firstPlayScoreTimes == _secondPlayScoreTimes;
+        }
+
+        private bool IsDifferentScore()
+        {
+            return _firstPlayScoreTimes != _secondPlayScoreTimes;
         }
 
         public void FirstPlayerScore()
