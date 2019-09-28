@@ -64,27 +64,28 @@ namespace TennisKata.Tests
         [Fact]
         public void Fifteen_All()
         {
-            GivenFirstPlayerScore(1);
-            GivenSecondPlayerScore(1);
+            GivenSameScore(1);
             ScoreShouldBe("Fifteen All");
         }
-
-       [Fact]
+       
+        [Fact]
         public void Thirty_All()
         {
-            GivenFirstPlayerScore(2);
-            GivenSecondPlayerScore(2);
+            GivenSameScore(2);
             ScoreShouldBe("Thirty All");
         }
 
        [Fact]
         public void Deuce()
         {
-            GivenFirstPlayerScore(3);
-            GivenSecondPlayerScore(3);
-            ScoreShouldBe("Deuce");    
+            GivenDeuce();
+            ScoreShouldBe("Deuce");
         }
 
+        private void GivenDeuce()
+        {
+            GivenSameScore(3);
+        }
 
         private void GivenFirstPlayerScore(int times)
         {
@@ -100,6 +101,12 @@ namespace TennisKata.Tests
             {
                 _tennis.SecondPlayerScore();
             }
+        }
+
+        private void GivenSameScore(int times)
+        {
+            GivenFirstPlayerScore(times);
+            GivenSecondPlayerScore(times);
         }
 
         private void ScoreShouldBe(string actual)
