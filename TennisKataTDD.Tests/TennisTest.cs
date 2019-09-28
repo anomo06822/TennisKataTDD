@@ -9,7 +9,7 @@ namespace TennisKataTDD.Tests
 
         public TennisTest()
         {
-            _tennis = new Tennis();
+            _tennis = new Tennis("FirstPlayer");
         }
 
         [Fact]
@@ -79,6 +79,14 @@ namespace TennisKataTDD.Tests
         {
             GivenSamePlayerScore(3);
             ScoreShouldBe("Deuce");
+        }
+
+        [Fact]
+        public void FirstPlayer_Adv()
+        {
+            GivenSamePlayerScore(3);
+            GivenFirstPlayerScore(1);
+            ScoreShouldBe("FirstPlayer Adv");
         }
 
         private void GivenSamePlayerScore(int times)

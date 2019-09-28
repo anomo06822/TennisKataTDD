@@ -15,10 +15,22 @@ namespace TennisKataTDD
             {3, "Forty" }
         };
 
+        private string _firstPlayerName;
+
+        public Tennis(string firstPlayerName)
+        {
+            _firstPlayerName = firstPlayerName;
+        }
+
         public string GetScore()
         {
             if (IsDifferentScore())
             {
+                if (_firstPlayScoreTimes > 3 && _firstPlayScoreTimes - _secondPlayScoreTimes == 1)
+                {
+                    return $"{_firstPlayerName} Adv";
+                }
+
                 return LookupScore();  
             }
 
