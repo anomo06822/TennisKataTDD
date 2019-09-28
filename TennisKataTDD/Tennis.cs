@@ -27,27 +27,26 @@ namespace TennisKata
 
         public string GetScore()
         {
-            if (IsScoreDifferent())
-            {
-                if (IsReadyForGamePoint())
-                {
-                    if (IsAdv())
-                    {
-                        return $"{AdvPlayer()}_Adv";
-                    }
+            return IsScoreDifferent() 
+                    ? IsReadyForGamePoint() ? AdvState() : LookupScore() 
+                    : IsDeuce() 
+                        ? Deuce() 
+                        : SameScore();
+        }
 
-                    return $"{AdvPlayer()}_Win";
-                }
+        private string AdvState()
+        {
+            return IsAdv() ? AdvScore() : WinScore();
+        }
 
-                return LookupScore();
-            }
+        private string AdvScore()
+        {
+            return $"{AdvPlayer()}_Adv";
+        }
 
-            if (IsDeuce())
-            {
-                return Deuce();
-            }
-
-            return SameScore();
+        private string WinScore()
+        {
+            return $"{AdvPlayer()}_Win";
         }
 
         private bool IsReadyForGamePoint()
