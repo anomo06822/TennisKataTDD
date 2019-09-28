@@ -35,7 +35,7 @@ namespace TennisKata
             return _firstPlayerScoreTimes >= 3;
         }
 
-        private static string Deuce()
+        private string Deuce()
         {
             return "Deuce";
         }
