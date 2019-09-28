@@ -35,6 +35,8 @@ namespace TennisKata
                     {
                         return $"{AdvPlayer()}_Adv";
                     }
+
+                    return $"{AdvPlayer()}_Win";
                 }
 
                 return LookupScore();
