@@ -1,4 +1,6 @@
-﻿namespace TennisKataTDD
+﻿using System.Collections.Generic;
+
+namespace TennisKataTDD
 {
     public class Tennis
     {
@@ -6,14 +8,15 @@
 
         public string GetScore()
         {
-            if (_firstPlayScoreTimes == 2)
+            Dictionary<int, string> scoreLookup = new Dictionary<int, string>()
             {
-                return "Thirty Love";
-            }
+                {1, "Fifteen" },
+                {2, "Thirty" }
+            };
 
-            if (_firstPlayScoreTimes == 1)
+            if (_firstPlayScoreTimes > 0)
             {
-                return "Fifteen Love";  
+                return $"{scoreLookup[_firstPlayScoreTimes]} Love";  
             }
 
             return "Love All";
