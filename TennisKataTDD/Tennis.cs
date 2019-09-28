@@ -19,6 +19,14 @@ namespace TennisKata
         {
             if (IsScoreDifferent())
             {
+                if (_firstPlayerScoreTimes > 3)
+                {
+                    if (_firstPlayerScoreTimes - _secondPlayerScoreTimes == 1)
+                    {
+                        return "FirstPlayer_Adv";
+                    }
+                }
+
                 return LookupScore();
             }
 

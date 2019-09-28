@@ -82,6 +82,15 @@ namespace TennisKata.Tests
             ScoreShouldBe("Deuce");
         }
 
+       [Fact]
+        public void FirstPlayer_Adv()
+        {
+            GivenDeuce();
+            GivenFirstPlayerScore(1);
+            ScoreShouldBe("FirstPlayer_Adv");
+        }
+
+
         private void GivenDeuce()
         {
             GivenSameScore(3);
