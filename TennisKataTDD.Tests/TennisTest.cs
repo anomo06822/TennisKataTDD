@@ -60,6 +60,14 @@ namespace TennisKataTDD.Tests
             ScoreShouldBe("Love Forty");
         }
 
+        [Fact]
+        public void Fifteen_All()
+        {
+            GivenFirstPlayerScore(1);
+            GivenSecondPlayerScore(1);
+            ScoreShouldBe("Fifteen All");
+        }
+
         private void GivenFirstPlayerScore(int times)
         {
             for (int i = 0; i < times; i++)
