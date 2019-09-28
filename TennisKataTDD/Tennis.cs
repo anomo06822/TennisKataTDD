@@ -11,7 +11,8 @@ namespace TennisKataTDD
             Dictionary<int, string> scoreLookup = new Dictionary<int, string>()
             {
                 {1, "Fifteen" },
-                {2, "Thirty" }
+                {2, "Thirty" },
+                {3, "Forty" }
             };
 
             if (_firstPlayScoreTimes > 0)
