@@ -106,6 +106,14 @@ namespace TennisKata.Tests
             ScoreShouldBe("FirstPlayer_Win");
         }
 
+        [Fact]
+        public void SecondPlayer_Win()
+        {
+            GivenDeuce();
+            GivenSecondPlayerScore(2);
+            ScoreShouldBe("SecondPlayer_Win");
+        }
+
 
         private void GivenDeuce()
         {
