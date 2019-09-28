@@ -69,6 +69,14 @@ namespace TennisKata.Tests
             ScoreShouldBe("Fifteen All");
         }
 
+       [Fact]
+        public void Thirty_All()
+        {
+            GivenFirstPlayerScore(2);
+            GivenSecondPlayerScore(2);
+            ScoreShouldBe("Thirty All");
+        }
+
 
         private void GivenFirstPlayerScore(int times)
         {
