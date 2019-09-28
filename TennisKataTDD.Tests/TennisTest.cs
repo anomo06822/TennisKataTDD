@@ -105,6 +105,14 @@ namespace TennisKataTDD.Tests
             ScoreShouldBe("FirstPlayer Win");
         }
 
+        [Fact]
+        public void SecondPlayer_Win()
+        {
+            GivenSamePlayerScore(3);
+            GivenSecondPlayerScore(2);
+            ScoreShouldBe("SecondPlayer Win");
+        }
+
         private void GivenSamePlayerScore(int times)
         {
             GivenFirstPlayerScore(times);

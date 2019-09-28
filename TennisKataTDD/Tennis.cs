@@ -40,6 +40,12 @@ namespace TennisKataTDD
                     return $"{AdvantagePlayerName()} Win";
                 }
 
+                if (_secondPlayScoreTimes >= 4
+                    && Math.Abs(_secondPlayScoreTimes - _firstPlayScoreTimes) > 1)
+                {
+                    return $"{AdvantagePlayerName()} Win";
+                }
+
                 return LookupScore();  
             }
 
