@@ -24,6 +24,11 @@ namespace TennisKataTDD
 
             if (IsSameScore())
             {
+                if (_firstPlayScoreTimes >= 3)
+                {
+                    return "Deuce";
+                }
+
                 return SameScore();
             }
 
