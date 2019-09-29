@@ -10,7 +10,7 @@ namespace TennisKataTDD.Tests
 
         public TennisTest()
         {
-            _tennis = new Tennis();
+            _tennis = new Tennis("FirstPlayerName");
         }
 
         [Fact]
@@ -80,6 +80,14 @@ namespace TennisKataTDD.Tests
         {
             GivenDeuce();
             ScoreShouldBe("Deuce");
+        }
+
+        [Fact]
+        public void FirstPlayer_Adv()
+        {
+            GivenDeuce();
+            GivenFirstPlayerTimes(1);
+            ScoreShouldBe("FirstPlayerName Adv");
         }
 
         private void GivenDeuce()
