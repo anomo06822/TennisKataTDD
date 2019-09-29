@@ -22,6 +22,11 @@ namespace TennisKataTDD
                 return $"{_scoreLookup[_firstPlayerTimes]} {_scoreLookup[_secondPlayerTimes]}";
             }
 
+            if (IsSameScore() && _firstPlayerTimes == 2)
+            {
+                return "Thirty All";
+            }
+
             if (IsSameScore() && _firstPlayerTimes == 1)
             {
                 return "Fifteen All";
