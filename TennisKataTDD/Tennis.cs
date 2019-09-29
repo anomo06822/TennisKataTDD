@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace TennisKataTDD
 {
@@ -24,6 +25,11 @@ namespace TennisKataTDD
 
             if (IsSameScore() && _firstPlayerTimes > 0)
             {
+                if (_firstPlayerTimes >= 3)
+                {
+                    return "Deuce";
+                }
+
                 return $"{_scoreLookup[_firstPlayerTimes]} All";
             }
 
