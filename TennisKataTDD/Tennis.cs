@@ -7,8 +7,9 @@ namespace TennisKataTDD
         private int _firstPlayerTimes;
         private int _secondPlayerTimes;
 
-        private Dictionary<int, string> _lookupScore = new Dictionary<int, string>()
+        private readonly Dictionary<int, string> _lookupScore = new Dictionary<int, string>()
         {
+            {0, "Love"},
             {1, "Fifteen"},
             {2, "Thirty"},
             {3, "Forty"},
@@ -17,27 +18,52 @@ namespace TennisKataTDD
 
         public string GetScore()
         {
-            if (_firstPlayerTimes == _secondPlayerTimes && _firstPlayerTimes >= 3)
+            if (IsDeuce())
             {
-                return $"Deuce";
+                return DeuceScore();
             }
 
-            if (_firstPlayerTimes == _secondPlayerTimes && _firstPlayerTimes > 0)
+            if (IsSameScore())
             {
-                return $"{_lookupScore[_firstPlayerTimes]} All";
+                return SameScore();
             }
 
-            if (_firstPlayerTimes != _secondPlayerTimes && _secondPlayerTimes > 0)
+            if (IsDifferentScore())
             {
-                return $"Love {_lookupScore[_secondPlayerTimes]}";
+                return LookupScore();
             }
 
-            if (_firstPlayerTimes != _secondPlayerTimes && _firstPlayerTimes > 0)
-            {
-                return $"{_lookupScore[_firstPlayerTimes]} Love";
-            }
+            return SameScore();
+        }
 
-            return "Love All";
+        private string LookupScore()
+        {
+            return $"{_lookupScore[_firstPlayerTimes]} {_lookupScore[_secondPlayerTimes]}";
+        }
+
+        private bool IsDifferentScore()
+        {
+            return _firstPlayerTimes != _secondPlayerTimes && (_firstPlayerTimes > 0 || _secondPlayerTimes > 0);
+        }
+
+        private string SameScore()
+        {
+            return $"{_lookupScore[_firstPlayerTimes]} All";
+        }
+
+        private bool IsSameScore()
+        {
+            return _firstPlayerTimes == _secondPlayerTimes && _firstPlayerTimes > 0;
+        }
+
+        private static string DeuceScore()
+        {
+            return $"Deuce";
+        }
+
+        private bool IsDeuce()
+        {
+            return _firstPlayerTimes == _secondPlayerTimes && _firstPlayerTimes >= 3;
         }
 
         public void FirstPlayerTimes()
