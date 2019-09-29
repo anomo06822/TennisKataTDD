@@ -27,24 +27,14 @@ namespace TennisKataTDD
 
         public string GetScore()
         {
-            if (IsDifferentScore() && (_firstPlayerTimes > 0 || _secondPlayerTimes > 0))
+            if (IsWin())
             {
-                if (IsAdv())
-                {
-                    return $"{AdvantagePlayerName()} Adv";
-                }
+                return WinScore();
+            }
 
-                if (_firstPlayerTimes >= 4 && _firstPlayerTimes - _secondPlayerTimes > 1)
-                {
-                    return  $"{AdvantagePlayerName()} Win";
-                }
-
-                if (_secondPlayerTimes >= 4 && _secondPlayerTimes - _firstPlayerTimes > 1)
-                {
-                    return  $"{AdvantagePlayerName()} Win";
-                }
-
-                return LookupScore();
+            if (IsAdv())
+            {
+                return AdvScore();
             }
 
             if (IsDeuce())
@@ -52,12 +42,22 @@ namespace TennisKataTDD
                 return DeuceScore();
             }
 
-            if (IsSameScore() && _firstPlayerTimes > 0)
-            { 
-                return SameScore();
-            }
+            return IsDifferentScore() ? LookupScore() : SameScore();
+        }
 
-            return SameScore();
+        private string AdvScore()
+        {
+            return $"{AdvantagePlayerName()} Adv";
+        }
+
+        private string WinScore()
+        {
+            return $"{AdvantagePlayerName()} Win";
+        }
+
+        private bool IsWin()
+        {
+            return (_firstPlayerTimes >= 4 || _secondPlayerTimes >= 4 )&& Math.Abs(_firstPlayerTimes - _secondPlayerTimes) > 1;
         }
 
         private bool IsAdv()
