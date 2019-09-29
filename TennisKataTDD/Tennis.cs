@@ -29,14 +29,9 @@ namespace TennisKataTDD
         {
             if (IsDifferentScore() && (_firstPlayerTimes > 0 || _secondPlayerTimes > 0))
             {
-                if (_firstPlayerTimes > 3 && _firstPlayerTimes - _secondPlayerTimes == 1)
+                if (IsAdv())
                 {
-                    return $"{_firstPlayerName} Adv";
-                }
-
-                if (_secondPlayerTimes > 3 && _secondPlayerTimes - _firstPlayerTimes == 1)
-                {
-                    return $"{_secondPlayerName} Adv";
+                    return $"{AdvantagePlayerName()} Adv";
                 }
 
                 return LookupScore();
@@ -53,6 +48,17 @@ namespace TennisKataTDD
             }
 
             return SameScore();
+        }
+
+        private bool IsAdv()
+        {
+            return (_firstPlayerTimes > 3 || _secondPlayerTimes > 3) 
+                   && Math.Abs(_firstPlayerTimes - _secondPlayerTimes) == 1;
+        }
+
+        private string AdvantagePlayerName()
+        {
+            return _firstPlayerTimes > _secondPlayerTimes ? _firstPlayerName : _secondPlayerName;
         }
 
         private string SameScore()
