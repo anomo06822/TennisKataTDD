@@ -47,6 +47,12 @@ namespace TennisKataTDD
                     return $"{LeadingPlayerName()} Adv";
                 }
 
+                if ((_firstPlayerTimes > 3 || _secondPlayerTimes > 3)
+                    && Math.Abs(_firstPlayerTimes - _secondPlayerTimes) >= 2)
+                {
+                    return $"{LeadingPlayerName()} Win";
+                }
+
                 return LookupScore();
             }
 
