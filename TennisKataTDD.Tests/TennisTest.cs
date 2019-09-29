@@ -22,16 +22,23 @@ namespace TennisKataTDD.Tests
         [Fact]
         public void Fifteen_Love()
         {
-            GivenFirstPlayerTimes();
+            GivenFirstPlayerTimes(1);
             ScoreShouldBe("Fifteen Love");
         }
 
         [Fact]
         public void Thirty_Love()
         {
-            GivenFirstPlayerTimes();
-            GivenFirstPlayerTimes();
+            GivenFirstPlayerTimes(2);
             ScoreShouldBe("Thirty Love");
+        }
+
+        private void GivenFirstPlayerTimes(int times)
+        {
+            for (int i = 0; i < times; i++)
+            {
+                GivenFirstPlayerTimes();
+            }
         }
 
         private void GivenFirstPlayerTimes()
