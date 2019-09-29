@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace TennisKataTDD
 {
@@ -15,6 +16,15 @@ namespace TennisKataTDD
             {3, "Forty"},
         };
 
+        private readonly string _firstPlayerName;
+        private readonly string _secondPlayerName;
+
+        public Tennis(string firstPlayerName, string secondPlayerName)
+        {
+            _firstPlayerName = firstPlayerName;
+            _secondPlayerName = secondPlayerName;
+        }
+
 
         public string GetScore()
         {
@@ -25,15 +35,27 @@ namespace TennisKataTDD
 
             if (IsSameScore())
             {
+
                 return SameScore();
             }
 
             if (IsDifferentScore())
             {
+                if ((_firstPlayerTimes > 3 || _secondPlayerTimes > 3)
+                    && Math.Abs(_firstPlayerTimes - _secondPlayerTimes) == 1)
+                {
+                    return $"{LeadingPlayerName()} Adv";
+                }
+
                 return LookupScore();
             }
 
             return SameScore();
+        }
+
+        private string LeadingPlayerName()
+        {
+            return _firstPlayerTimes > _secondPlayerTimes ? _firstPlayerName : _secondPlayerName;
         }
 
         private string LookupScore()
