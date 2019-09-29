@@ -17,6 +17,11 @@ namespace TennisKataTDD
 
         public string GetScore()
         {
+            if (_firstPlayerTimes == _secondPlayerTimes && _firstPlayerTimes >= 3)
+            {
+                return $"Deuce";
+            }
+
             if (_firstPlayerTimes == _secondPlayerTimes && _firstPlayerTimes > 0)
             {
                 return $"{_lookupScore[_firstPlayerTimes]} All";
