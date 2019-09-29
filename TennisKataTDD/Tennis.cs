@@ -20,20 +20,40 @@ namespace TennisKataTDD
         {
             if (IsDifferentScore() && (_firstPlayerTimes > 0 || _secondPlayerTimes > 0))
             {
-                return $"{_scoreLookup[_firstPlayerTimes]} {_scoreLookup[_secondPlayerTimes]}";
+                return LookupScore();
+            }
+
+            if (IsDeuce())
+            {
+                return DeuceScore();
             }
 
             if (IsSameScore() && _firstPlayerTimes > 0)
-            {
-                if (_firstPlayerTimes >= 3)
-                {
-                    return "Deuce";
-                }
-
-                return $"{_scoreLookup[_firstPlayerTimes]} All";
+            { 
+                return SameScore();
             }
 
+            return SameScore();
+        }
+
+        private string SameScore()
+        {
             return $"{_scoreLookup[_firstPlayerTimes]} All";
+        }
+
+        private string LookupScore()
+        {
+            return $"{_scoreLookup[_firstPlayerTimes]} {_scoreLookup[_secondPlayerTimes]}";
+        }
+
+        private static string DeuceScore()
+        {
+            return "Deuce";
+        }
+
+        private bool IsDeuce()
+        {
+            return IsSameScore() && _firstPlayerTimes >= 3;
         }
 
         private bool IsSameScore()
