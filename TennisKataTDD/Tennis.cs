@@ -9,6 +9,7 @@ namespace TennisKataTDD
 
         private readonly Dictionary<int, string> _scoreLookup = new Dictionary<int, string>()
         {
+            {0, "Love" },
             {1, "Fifteen"},
             {2, "Thirty" },
             {3, "Forty" }
@@ -16,23 +17,27 @@ namespace TennisKataTDD
 
         public string GetScore()
         {
-            if (_secondPlayerTimes > 0 && _firstPlayerTimes != _secondPlayerTimes)
+            if (IsDifferentScore() && (_firstPlayerTimes > 0 || _secondPlayerTimes > 0))
             {
-                return $"Love {_scoreLookup[_secondPlayerTimes]}";
+                return $"{_scoreLookup[_firstPlayerTimes]} {_scoreLookup[_secondPlayerTimes]}";
             }
 
-            if (_firstPlayerTimes > 0 && _firstPlayerTimes != _secondPlayerTimes)
-            {
-                return $"{_scoreLookup[_firstPlayerTimes]} Love";
-            }
-
-            if (_firstPlayerTimes == _secondPlayerTimes && _firstPlayerTimes == 1)
+            if (IsSameScore() && _firstPlayerTimes == 1)
             {
                 return "Fifteen All";
             }
 
-
             return "Love All";
+        }
+
+        private bool IsSameScore()
+        {
+            return _firstPlayerTimes == _secondPlayerTimes;
+        }
+
+        private bool IsDifferentScore()
+        {
+            return _firstPlayerTimes != _secondPlayerTimes;
         }
 
         public void FirstPlayerTimes()
