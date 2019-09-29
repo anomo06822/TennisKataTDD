@@ -17,12 +17,17 @@ namespace TennisKataTDD
 
         public string GetScore()
         {
-            if (_secondPlayerTimes > 0)
+            if (_firstPlayerTimes == _secondPlayerTimes && _firstPlayerTimes > 0)
+            {
+                return $"{_lookupScore[_firstPlayerTimes]} All";
+            }
+
+            if (_firstPlayerTimes != _secondPlayerTimes && _secondPlayerTimes > 0)
             {
                 return $"Love {_lookupScore[_secondPlayerTimes]}";
             }
 
-            if (_firstPlayerTimes > 0)
+            if (_firstPlayerTimes != _secondPlayerTimes && _firstPlayerTimes > 0)
             {
                 return $"{_lookupScore[_firstPlayerTimes]} Love";
             }
