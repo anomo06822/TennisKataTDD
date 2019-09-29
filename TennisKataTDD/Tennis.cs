@@ -27,7 +27,7 @@ namespace TennisKataTDD
                 return $"{_scoreLookup[_firstPlayerTimes]} All";
             }
 
-            return $"{_scoreLookup[_firstPlayerTimes]}  All";
+            return $"{_scoreLookup[_firstPlayerTimes]} All";
         }
 
         private bool IsSameScore()
