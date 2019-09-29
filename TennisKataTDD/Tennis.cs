@@ -39,6 +39,11 @@ namespace TennisKataTDD
                     return  $"{AdvantagePlayerName()} Win";
                 }
 
+                if (_secondPlayerTimes >= 4 && _secondPlayerTimes - _firstPlayerTimes > 1)
+                {
+                    return  $"{AdvantagePlayerName()} Win";
+                }
+
                 return LookupScore();
             }
 
