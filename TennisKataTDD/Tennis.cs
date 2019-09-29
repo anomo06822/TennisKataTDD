@@ -6,10 +6,11 @@ namespace TennisKataTDD
     {
         private int _firstPlayerTimes;
 
-        private Dictionary<int, string> _scoreLookup = new Dictionary<int, string>()
+        private readonly Dictionary<int, string> _scoreLookup = new Dictionary<int, string>()
         {
             {1, "Fifteen"},
             {2, "Thirty" },
+            {3, "Forty" }
         };
 
         public string GetScore()
