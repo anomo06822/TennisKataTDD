@@ -52,6 +52,13 @@ namespace TennisKataTDD.Tests
             GivenSecondPlayerTimes(2);
             ThenScoreShouldBe("Love Thirty");
         }
+
+         [Fact]
+        public void Love_Forty()
+        {
+            GivenSecondPlayerTimes(3);
+            ThenScoreShouldBe("Love Forty");
+        }
         
         [Fact]
         public void Fifteen_All()
@@ -60,14 +67,15 @@ namespace TennisKataTDD.Tests
             GivenSecondPlayerTimes(1);
             ThenScoreShouldBe("Fifteen All");
         }
-        
+
         [Fact]
-        public void Love_Forty()
+        public void Thirty_All()
         {
-            GivenSecondPlayerTimes(3);
-            ThenScoreShouldBe("Love Forty");
+            GivenFirstPlayerTimes(2);
+            GivenSecondPlayerTimes(2);
+            ThenScoreShouldBe("Thirty All");
         }
-        
+       
         private void GivenSecondPlayerTimes(int times)
         {
             for (var i = 0; i < times; i++)
