@@ -33,30 +33,39 @@ namespace TennisKataTDD
                 return DeuceScore();
             }
 
-            if (IsSameScore())
+            if (IsReadyForGamePoint())
             {
-
-                return SameScore();
+                return AdvScore();
             }
 
-            if (IsDifferentScore())
+            if (IsReadyForGameOver())
             {
-                if ((_firstPlayerTimes > 3 || _secondPlayerTimes > 3)
-                    && Math.Abs(_firstPlayerTimes - _secondPlayerTimes) == 1)
-                {
-                    return $"{LeadingPlayerName()} Adv";
-                }
-
-                if ((_firstPlayerTimes > 3 || _secondPlayerTimes > 3)
-                    && Math.Abs(_firstPlayerTimes - _secondPlayerTimes) >= 2)
-                {
-                    return $"{LeadingPlayerName()} Win";
-                }
-
-                return LookupScore();
+                return WinScore();
             }
 
-            return SameScore();
+            return IsDifferentScore() ? LookupScore() : SameScore();
+        }
+
+        private string WinScore()
+        {
+            return $"{LeadingPlayerName()} Win";
+        }
+
+        private bool IsReadyForGameOver()
+        {
+            return (_firstPlayerTimes > 3 || _secondPlayerTimes > 3)
+                   && Math.Abs(_firstPlayerTimes - _secondPlayerTimes) >= 2;
+        }
+
+        private string AdvScore()
+        {
+            return $"{LeadingPlayerName()} Adv";
+        }
+
+        private bool IsReadyForGamePoint()
+        {
+            return (_firstPlayerTimes > 3 || _secondPlayerTimes > 3)
+                   && Math.Abs(_firstPlayerTimes - _secondPlayerTimes) == 1;
         }
 
         private string LeadingPlayerName()
