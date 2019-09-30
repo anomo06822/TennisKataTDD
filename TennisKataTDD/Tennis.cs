@@ -1,20 +1,25 @@
-﻿namespace TennisKataTDD
+﻿using System.Collections.Generic;
+
+namespace TennisKataTDD
 {
     public class Tennis
     {
         private int _firstPlayerTimes;
 
+        private Dictionary<int, string> _lookupScore = new Dictionary<int, string>()
+        {
+            {1, "Fifteen" },
+            {2, "Thirty" },
+            {3, "Forty" },
+        };
+
         public string GetScore()
         {
-            if (_firstPlayerTimes == 2)
+            if (_firstPlayerTimes > 0)
             {
-                return "Thirty Love";
+                return $"{_lookupScore[_firstPlayerTimes]} Love";
             }
 
-            if (_firstPlayerTimes == 1)
-            {
-                return "Fifteen Love";
-            }
             return "Love All";;
         }
 
