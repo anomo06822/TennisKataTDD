@@ -35,6 +35,35 @@ namespace TennisKataTDD.Tests
             ThenScoreShouldBe("Forty Love");
         }
         
+        [Fact]
+        public void Love_Fifteen()
+        {
+            GivenSecondPlayerTimes(1);
+            ThenScoreShouldBe("Love Fifteen");
+        }
+        
+        [Fact]
+        public void Love_Thirty()
+        {
+            GivenSecondPlayerTimes(2);
+            ThenScoreShouldBe("Love Thirty");
+        }
+        
+        [Fact]
+        public void Love_Forty()
+        {
+            GivenSecondPlayerTimes(3);
+            ThenScoreShouldBe("Love Forty");
+        }
+                
+        private void GivenSecondPlayerTimes(int times)
+        {
+            for (int i = 0; i < times; i++)
+            {
+                GivenSecondPlayerTimes();
+            }
+        }
+
         public void GivenFirstPlayerTimes(int times)
         {
             for (int i = 0; i < times; i++)
@@ -46,6 +75,11 @@ namespace TennisKataTDD.Tests
         private void GivenFirstPlayerTimes()
         {
             _tennis.FirstPlayerTimes();
+        }
+
+        private void GivenSecondPlayerTimes()
+        {
+            _tennis.SecondPlayerTimes();
         }
 
         private AndConstraint<StringAssertions> ThenScoreShouldBe(string score)
