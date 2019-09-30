@@ -6,7 +6,7 @@ namespace TennisKataTDD.Tests
 {
     public class TennisTest
     {
-        private Tennis _tennis = new Tennis();
+        private Tennis _tennis = new Tennis("FirstPlayerName", "SecondPlayerName");
 
         [Fact]
         public void Love_All()
@@ -76,6 +76,38 @@ namespace TennisKataTDD.Tests
             GivenSameScore(3);
             ThenScoreShouldBe("Deuce");
         }
+        
+        [Fact]
+        public void FirstPlayer_Adv()
+        {
+            GivenSameScore(3);
+            GivenFirstPlayerTimes(1);
+            ThenScoreShouldBe("FirstPlayerName Adv");
+        }
+        
+        [Fact]
+        public void SecondPlayer_Adv()
+        {
+            GivenSameScore(3);
+            GivenSecondPlayerTimes(1);
+            ThenScoreShouldBe("SecondPlayerName Adv");
+        }
+        
+        [Fact]
+        public void FirstPlayer_Win()
+        {
+            GivenSameScore(3);
+            GivenFirstPlayerTimes(2);
+            ThenScoreShouldBe("FirstPlayerName Win");
+        }
+        
+        [Fact]
+        public void SecondPlayer_Win()
+        {
+            GivenSameScore(3);
+            GivenSecondPlayerTimes(2);
+            ThenScoreShouldBe("SecondPlayerName Win");
+        }
 
         private void GivenSameScore(int times)
         {
@@ -92,7 +124,7 @@ namespace TennisKataTDD.Tests
             }
         }
 
-        public void GivenFirstPlayerTimes(int times)
+        private void GivenFirstPlayerTimes(int times)
         {
             for (int i = 0; i < times; i++)
             {
