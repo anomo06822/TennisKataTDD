@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.Serialization.Formatters;
 
 namespace TennisKataTDD
 {
@@ -9,6 +10,7 @@ namespace TennisKataTDD
 
         private readonly Dictionary<int, string> _lookupScore = new Dictionary<int, string>()
         {
+            {0, "Love" },
             {1, "Fifteen" },
             {2, "Thirty" },
             {3, "Forty" },
@@ -18,14 +20,19 @@ namespace TennisKataTDD
 
         public string GetScore()
         {
-            if (_firstPlayerTimes > 0)
+            if (_firstPlayerTimes == _secondPlayerTimes)
             {
-                return $"{_lookupScore[_firstPlayerTimes]} Love";
+                if (_firstPlayerTimes >= 3)
+                {
+                    return "Deuce";
+                }
+
+                return $"{_lookupScore[_firstPlayerTimes]} All";
             }
 
-            if (_secondPlayerTimes > 0)
+            if ((_firstPlayerTimes > 0 || _secondPlayerTimes > 0) && _firstPlayerTimes != _secondPlayerTimes)
             {
-                return $"Love {_lookupScore[_secondPlayerTimes]}";
+                return $"{_lookupScore[_firstPlayerTimes]} {_lookupScore[_secondPlayerTimes]}";
             }
 
             return "Love All";;
