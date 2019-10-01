@@ -18,13 +18,13 @@ namespace TennisKataTDD
 
         public string GetStore()
         {
+            if (IsDeuce())
+            {
+                return "Deuce";
+            }
+
             if (IsSameScore() && _firstPlayerTimes > 0 )
             {
-                if (_firstPlayerTimes == 3)
-                {
-                    return "Deuce";
-                }
-
                 return $"{_lookupScore[_firstPlayerTimes]} All";
             }
 
@@ -39,6 +39,11 @@ namespace TennisKataTDD
             }
 
             return "Love All";
+        }
+
+        private bool IsDeuce()
+        {
+            return IsSameScore() && _firstPlayerTimes == 3;
         }
 
         private bool IsSameScore()
