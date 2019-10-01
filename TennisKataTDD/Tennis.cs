@@ -34,6 +34,12 @@ namespace TennisKataTDD
                     var playerName = _firstPlayerTimes > _secondPlayerTimes ? _firstPlayerName : _secondPlayerName; 
                     return $"{playerName} Adv";
                 }
+
+                if (Math.Abs(_firstPlayerTimes - _secondPlayerTimes) > 1)
+                {
+                    var playerName = _firstPlayerTimes > _secondPlayerTimes ? _firstPlayerName : _secondPlayerName;
+                    return $"{playerName} Win";
+                }
             }
 
             if (IsDeuce())
