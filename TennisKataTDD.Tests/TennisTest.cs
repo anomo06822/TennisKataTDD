@@ -17,12 +17,20 @@ namespace TennisKataTDD.Tests
         {
             ThenScoreShouldBe("Love All");
         }
-
+        
         [Fact]
         public void Fifteen_Love()
         {
             GivenFirstPlayerTimes();
             ThenScoreShouldBe("Fifteen Love");
+        }
+
+        [Fact]
+        public void Thirty_Love()
+        {
+            GivenFirstPlayerTimes();
+            GivenFirstPlayerTimes();
+            ThenScoreShouldBe("Thirty Love");
         }
 
         private void GivenFirstPlayerTimes()

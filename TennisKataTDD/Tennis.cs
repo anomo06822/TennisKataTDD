@@ -6,6 +6,10 @@
 
         public string GetStore()
         {
+            if (_firstPlayerTimes == 2)
+            {
+                return "Thirty Love";
+            }
             if (_firstPlayerTimes == 1)
             {
                 return "Fifteen Love";
