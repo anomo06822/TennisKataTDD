@@ -18,14 +18,9 @@ namespace TennisKataTDD
 
         public string GetStore()
         {
-            if (_firstPlayerTimes == _secondPlayerTimes && _firstPlayerTimes == 2)
+            if (IsSameScore() && _firstPlayerTimes > 0 )
             {
-                return "Thirty All";
-            }
-
-            if (_firstPlayerTimes == _secondPlayerTimes && _firstPlayerTimes == 1)
-            {
-                return "Fifteen All";
+                return $"{_lookupScore[_firstPlayerTimes]} All";
             }
 
             if (_secondPlayerTimes > 0)
@@ -39,6 +34,11 @@ namespace TennisKataTDD
             }
 
             return "Love All";
+        }
+
+        private bool IsSameScore()
+        {
+            return _firstPlayerTimes == _secondPlayerTimes;
         }
 
         public void FirstPlayerTimes()
