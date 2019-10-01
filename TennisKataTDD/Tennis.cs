@@ -18,6 +18,18 @@ namespace TennisKataTDD
 
         public string GetStore()
         {
+            if (_firstPlayerTimes != _secondPlayerTimes && _firstPlayerTimes > 3 &&
+                _firstPlayerTimes - _secondPlayerTimes == 1)
+            {
+                return "FirstPlayerName Adv";
+            }
+
+            if (_firstPlayerTimes != _secondPlayerTimes && _secondPlayerTimes > 3 &&
+                _secondPlayerTimes - _firstPlayerTimes == 1)
+            {
+                return "SecondPlayerName Adv";
+            }
+
             if (IsDeuce())
             {
                 return "Deuce";
