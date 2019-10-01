@@ -10,6 +10,7 @@ namespace TennisKataTDD
 
         private Dictionary<int, string> _lookupScore = new Dictionary<int, string>()
         {
+            {0, "Love" },
             {1, "Fifteen" },
             {2, "Thirty" },
             {3, "Forty" },
@@ -27,42 +28,69 @@ namespace TennisKataTDD
 
         public string GetStore()
         {
-            if (_firstPlayerTimes != _secondPlayerTimes && _firstPlayerTimes > 3 || _secondPlayerTimes > 3)
+            if (IsReadyForGamePoint())
             {
-                if (Math.Abs(_firstPlayerTimes - _secondPlayerTimes) == 1)
-                {
-                    var playerName = _firstPlayerTimes > _secondPlayerTimes ? _firstPlayerName : _secondPlayerName; 
-                    return $"{playerName} Adv";
-                }
+                return AdvantageScore();
+            }
 
-                if (Math.Abs(_firstPlayerTimes - _secondPlayerTimes) > 1)
-                {
-                    var playerName = _firstPlayerTimes > _secondPlayerTimes ? _firstPlayerName : _secondPlayerName;
-                    return $"{playerName} Win";
-                }
+            if (IsReadyForGameOver())
+            {
+                return WinScore();
             }
 
             if (IsDeuce())
             {
-                return "Deuce";
+                return DeuceScore();
             }
 
-            if (IsSameScore() && _firstPlayerTimes > 0 )
-            {
-                return $"{_lookupScore[_firstPlayerTimes]} All";
-            }
+            return IsSameScore() ? SameScore() : LookupScore();
+        }
 
-            if (_secondPlayerTimes > 0)
-            {
-                return $"Love {_lookupScore[_secondPlayerTimes]}";
-            }
+        private string LookupScore()
+        {
+            return $"{_lookupScore[_firstPlayerTimes]} {_lookupScore[_secondPlayerTimes]}";
+        }
 
-            if (_firstPlayerTimes > 0)
-            {
-                return $"{_lookupScore[_firstPlayerTimes]} Love";
-            }
+        private string SameScore()
+        {
+            return $"{_lookupScore[_firstPlayerTimes]} All";
+        }
 
-            return "Love All";
+        private static string DeuceScore()
+        {
+            return "Deuce";
+        }
+
+        private string WinScore()
+        {
+            return $"{AdvantagePlayerName()} Win";
+        }
+
+        private string AdvantageScore()
+        {
+            return $"{AdvantagePlayerName()} Adv";
+        }
+
+        private bool IsReadyForGameOver()
+        {
+            return (IsDifferentScore() && _firstPlayerTimes > 3 || _secondPlayerTimes > 3)
+                   && Math.Abs(_firstPlayerTimes - _secondPlayerTimes) > 1;
+        }
+
+        private bool IsReadyForGamePoint()
+        {
+            return (IsDifferentScore() && _firstPlayerTimes > 3 || _secondPlayerTimes > 3)
+                   && Math.Abs(_firstPlayerTimes - _secondPlayerTimes) == 1;
+        }
+
+        private string AdvantagePlayerName()
+        {
+            return _firstPlayerTimes > _secondPlayerTimes ? _firstPlayerName : _secondPlayerName;
+        }
+
+        private bool IsDifferentScore()
+        {
+            return _firstPlayerTimes != _secondPlayerTimes;
         }
 
         private bool IsDeuce()
