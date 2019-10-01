@@ -18,6 +18,11 @@ namespace TennisKataTDD
 
         public string GetStore()
         {
+            if (_firstPlayerTimes == _secondPlayerTimes && _firstPlayerTimes == 1)
+            {
+                return "Fifteen All";
+            }
+
             if (_secondPlayerTimes > 0)
             {
                 return $"Love {_lookupScore[_secondPlayerTimes]}";
