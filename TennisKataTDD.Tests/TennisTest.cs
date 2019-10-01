@@ -74,6 +74,13 @@ namespace TennisKataTDD.Tests
             ThenScoreShouldBe("Thirty All");
         }
 
+        [Fact]
+        public void Deuce()
+        {
+            GivenSamePlayerTimes(3);
+            ThenScoreShouldBe("Deuce");
+        }
+
         private void GivenSamePlayerTimes(int times)
         {
             GivenFirstPlayerTimes(times);
