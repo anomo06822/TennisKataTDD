@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 
 namespace TennisKataTDD
@@ -15,19 +16,24 @@ namespace TennisKataTDD
         };
 
         private int _secondPlayerTimes;
+        private string _firstPlayerName;
+        private string _secondPlayerName;
+
+        public Tennis(string firstPlayerName, string secondPlayerName)
+        {
+            _firstPlayerName = firstPlayerName;
+            _secondPlayerName = secondPlayerName;
+        }
 
         public string GetStore()
         {
-            if (_firstPlayerTimes != _secondPlayerTimes && _firstPlayerTimes > 3 &&
-                _firstPlayerTimes - _secondPlayerTimes == 1)
+            if (_firstPlayerTimes != _secondPlayerTimes && _firstPlayerTimes > 3 || _secondPlayerTimes > 3)
             {
-                return "FirstPlayerName Adv";
-            }
-
-            if (_firstPlayerTimes != _secondPlayerTimes && _secondPlayerTimes > 3 &&
-                _secondPlayerTimes - _firstPlayerTimes == 1)
-            {
-                return "SecondPlayerName Adv";
+                if (Math.Abs(_firstPlayerTimes - _secondPlayerTimes) == 1)
+                {
+                    var playerName = _firstPlayerTimes > _secondPlayerTimes ? _firstPlayerName : _secondPlayerName; 
+                    return $"{playerName} Adv";
+                }
             }
 
             if (IsDeuce())

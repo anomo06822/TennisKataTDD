@@ -9,7 +9,7 @@ namespace TennisKataTDD.Tests
 
         public TennisTest()
         {
-            _tennis = new Tennis();
+            _tennis = new Tennis("FirstPlayerName", "SecondPlayerName");
         }
 
         [Fact]
@@ -96,6 +96,28 @@ namespace TennisKataTDD.Tests
             GivenSecondPlayerTimes(1);
             ThenScoreShouldBe("SecondPlayerName Adv");
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         private void GivenSamePlayerTimes(int times)
         {
