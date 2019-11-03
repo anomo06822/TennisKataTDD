@@ -18,6 +18,16 @@ namespace TennisKataTDD
                 {3, "Forty"}
             };
 
+            if (_firstPlayerTimes > 3 && _firstPlayerTimes - _secondPlayerTimes == 1)
+            {
+                return "FirstPlayerName Adv";
+            }
+
+            if (_secondPlayerTimes > 3 && _secondPlayerTimes - _firstPlayerTimes == 1)
+            {
+                return "SecondPlayerName Adv";
+            }
+
             if (_firstPlayerTimes == _secondPlayerTimes)
             {
                 if (_firstPlayerTimes > 2)
