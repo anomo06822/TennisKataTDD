@@ -12,27 +12,23 @@ namespace TennisKataTDD
         {
             var lookupScores = new Dictionary<int, string>()
             {
+                {0, "Love"},
                 {1, "Fifteen"},
                 {2, "Thirty"},
                 {3, "Forty"}
             };
 
-            if (_firstPlayerTimes == _secondPlayerTimes && _firstPlayerTimes > 0)
+            if (_firstPlayerTimes == _secondPlayerTimes)
             {
                 return $"{lookupScores[_firstPlayerTimes]}_All";
             }
 
-            if (_firstPlayerTimes > 0)
+            if (_firstPlayerTimes != _secondPlayerTimes)
             {
-                return $"{lookupScores[_firstPlayerTimes]}_Love";
+                return $"{lookupScores[_firstPlayerTimes]}_{lookupScores[_secondPlayerTimes]}";
             }
 
-            if (_secondPlayerTimes > 0)
-            {
-                return $"Love_{lookupScores[_secondPlayerTimes]}";
-            }
-
-            return "Love_All";
+            return string.Empty;
         }
 
         public void FirstPlayerScoreTimes()
