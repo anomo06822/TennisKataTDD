@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TennisKataTDD
 {
@@ -8,20 +9,18 @@ namespace TennisKataTDD
 
         public string GetScore()
         {
-            if (_firstPlayerTimes == 3)
+            var lookupScores = new Dictionary<int, string>()
             {
-                return "Forty_Love";
+                {1, "Fifteen"},
+                {2, "Thirty"},
+                {3, "Forty"}
+            };
+
+            if (_firstPlayerTimes > 0)
+            {
+                return $"{lookupScores[_firstPlayerTimes]}_Love";
             }
 
-            if (_firstPlayerTimes == 2)
-            {
-                return "Thirty_Love";
-            }
-
-            if (_firstPlayerTimes == 1)
-            {
-                return "Fifteen_Love";
-            }
             return "Love_All";
         }
 
