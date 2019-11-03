@@ -17,6 +17,11 @@ namespace TennisKataTDD
                 {3, "Forty"}
             };
 
+            if (_firstPlayerTimes == _secondPlayerTimes && _firstPlayerTimes == 1)
+            {
+                return "Fifteen_All";
+            }
+
             if (_firstPlayerTimes > 0)
             {
                 return $"{lookupScores[_firstPlayerTimes]}_Love";
