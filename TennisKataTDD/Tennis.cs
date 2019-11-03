@@ -25,28 +25,15 @@ namespace TennisKataTDD
                 {2, "Thirty"},
                 {3, "Forty"}
             };
-            if (_firstPlayerTimes > 3 && Math.Abs(_firstPlayerTimes - _secondPlayerTimes) > 1)
+
+            if ((_firstPlayerTimes > 3 || _secondPlayerTimes > 3) && Math.Abs(_firstPlayerTimes - _secondPlayerTimes) > 1)
             {
-                if (_firstPlayerTimes > _secondPlayerTimes)
-                    return $"{_firstPlayerName} Win";
+                return $"{GetLeadingPlayerName()} Win";
             }
 
-            if (_secondPlayerTimes > 3 && Math.Abs(_firstPlayerTimes - _secondPlayerTimes) > 1)
+            if ((_firstPlayerTimes > 3 || _secondPlayerTimes > 3) && Math.Abs(_firstPlayerTimes - _secondPlayerTimes) == 1)
             {
-                if (_secondPlayerTimes > _firstPlayerTimes)
-                    return $"{_secondPlayerName} Win";
-            }
-
-            if (_firstPlayerTimes > 3 && Math.Abs(_firstPlayerTimes - _secondPlayerTimes) == 1)
-            {
-                if (_firstPlayerTimes > _secondPlayerTimes)
-                    return $"{_firstPlayerName} Adv";
-            }
-
-            if (_secondPlayerTimes > 3 && Math.Abs(_firstPlayerTimes - _secondPlayerTimes) == 1)
-            {
-                if ( _secondPlayerTimes > _firstPlayerTimes)
-                    return $"{_secondPlayerName} Adv";
+                return $"{GetLeadingPlayerName()} Adv";
             }
 
             if (_firstPlayerTimes == _secondPlayerTimes)
@@ -65,6 +52,11 @@ namespace TennisKataTDD
             }
 
             return string.Empty;
+        }
+
+        private string GetLeadingPlayerName()
+        {
+            return _firstPlayerTimes > _secondPlayerTimes ? _firstPlayerName : _secondPlayerName;
         }
 
         public void FirstPlayerScoreTimes()
