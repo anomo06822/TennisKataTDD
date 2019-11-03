@@ -20,6 +20,11 @@ namespace TennisKataTDD
 
             if (_firstPlayerTimes == _secondPlayerTimes)
             {
+                if (_firstPlayerTimes > 2)
+                {
+                    return "Deuce";
+                }
+
                 return $"{lookupScores[_firstPlayerTimes]}_All";
             }
 
