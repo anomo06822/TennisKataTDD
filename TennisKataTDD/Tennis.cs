@@ -2,7 +2,7 @@
 {
     public class Tennis 
     {
-        public string GetPlayerScore()
+        public string GetScore()
         {
             return "Love_All";
         }
