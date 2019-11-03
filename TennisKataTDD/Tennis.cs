@@ -12,6 +12,7 @@ namespace TennisKataTDD
             {
                 return "Thirty_Love";
             }
+
             if (_firstPlayerTimes == 1)
             {
                 return "Fifteen_Love";
