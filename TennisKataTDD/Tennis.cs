@@ -6,6 +6,7 @@ namespace TennisKataTDD
     public class Tennis 
     {
         private int _firstPlayerTimes;
+        private int _secondPlayerTimes;
 
         public string GetScore()
         {
@@ -21,12 +22,22 @@ namespace TennisKataTDD
                 return $"{lookupScores[_firstPlayerTimes]}_Love";
             }
 
+            if (_secondPlayerTimes > 0)
+            {
+                return $"Love_{lookupScores[_secondPlayerTimes]}";
+            }
+
             return "Love_All";
         }
 
         public void FirstPlayerScoreTimes()
         {
             _firstPlayerTimes++;
+        }
+
+        public void SecondPlayerScoreTimes()
+        {
+            _secondPlayerTimes++;
         }
     }
 }
