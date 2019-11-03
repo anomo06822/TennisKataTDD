@@ -9,7 +9,7 @@ namespace TennisKataTDD.Tests
 
         public TennisTest()
         {
-            _tennis = new Tennis();
+            _tennis = new Tennis("FirstPlayerName", "SecondPlayerName");
         }
         
         [Fact]
