@@ -10,6 +10,14 @@ namespace TennisKataTDD
         private string _firstPlayerName;
         private string _secondPlayerName;
 
+        private Dictionary<int, string> _lookupScores = new Dictionary<int, string>()
+        {
+            {0, "Love"},
+            {1, "Fifteen"},
+            {2, "Thirty"},
+            {3, "Forty"}
+        };
+
         public Tennis(string firstPlayerName, string secondPlayerName)
         {
             _firstPlayerName = firstPlayerName;
@@ -18,40 +26,67 @@ namespace TennisKataTDD
 
         public string GetScore()
         {
-            var lookupScores = new Dictionary<int, string>()
+            if (IsReadyForWin())
             {
-                {0, "Love"},
-                {1, "Fifteen"},
-                {2, "Thirty"},
-                {3, "Forty"}
-            };
-
-            if ((_firstPlayerTimes > 3 || _secondPlayerTimes > 3) && Math.Abs(_firstPlayerTimes - _secondPlayerTimes) > 1)
-            {
-                return $"{GetLeadingPlayerName()} Win";
+                return GetWinScore();
             }
 
-            if ((_firstPlayerTimes > 3 || _secondPlayerTimes > 3) && Math.Abs(_firstPlayerTimes - _secondPlayerTimes) == 1)
+            if (IsAdvantage())
             {
-                return $"{GetLeadingPlayerName()} Adv";
+                return GetAdvantage();
             }
 
-            if (_firstPlayerTimes == _secondPlayerTimes)
+            if (IsDeuce())
             {
-                if (_firstPlayerTimes > 2)
-                {
-                    return "Deuce";
-                }
-
-                return $"{lookupScores[_firstPlayerTimes]}_All";
+                return GetDeuce();
             }
 
-            if (_firstPlayerTimes != _secondPlayerTimes)
-            {
-                return $"{lookupScores[_firstPlayerTimes]}_{lookupScores[_secondPlayerTimes]}";
-            }
+            return IsSameScore() ? GetSameScore() : GetLookupScore();
+        }
 
-            return string.Empty;
+        private string GetLookupScore()
+        {
+            return $"{_lookupScores[_firstPlayerTimes]}_{_lookupScores[_secondPlayerTimes]}";
+        }
+
+        private string GetSameScore()
+        {
+            return $"{_lookupScores[_firstPlayerTimes]}_All";
+        }
+
+        private bool IsSameScore()
+        {
+            return _firstPlayerTimes == _secondPlayerTimes;
+        }
+
+        private static string GetDeuce()
+        {
+            return "Deuce";
+        }
+
+        private bool IsDeuce()
+        {
+            return _firstPlayerTimes == _secondPlayerTimes && _firstPlayerTimes > 2;
+        }
+
+        private string GetAdvantage()
+        {
+            return $"{GetLeadingPlayerName()} Adv";
+        }
+
+        private bool IsAdvantage()
+        {
+            return (_firstPlayerTimes > 3 || _secondPlayerTimes > 3) && Math.Abs(_firstPlayerTimes - _secondPlayerTimes) == 1;
+        }
+
+        private string GetWinScore()
+        {
+            return $"{GetLeadingPlayerName()} Win";
+        }
+
+        private bool IsReadyForWin()
+        {
+            return (_firstPlayerTimes > 3 || _secondPlayerTimes > 3) && Math.Abs(_firstPlayerTimes - _secondPlayerTimes) > 1;
         }
 
         private string GetLeadingPlayerName()
