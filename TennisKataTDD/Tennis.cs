@@ -25,6 +25,17 @@ namespace TennisKataTDD
                 {2, "Thirty"},
                 {3, "Forty"}
             };
+            if (_firstPlayerTimes > 3 && Math.Abs(_firstPlayerTimes - _secondPlayerTimes) > 1)
+            {
+                if (_firstPlayerTimes > _secondPlayerTimes)
+                    return $"{_firstPlayerName} Win";
+            }
+
+            if (_secondPlayerTimes > 3 && Math.Abs(_firstPlayerTimes - _secondPlayerTimes) > 1)
+            {
+                if (_secondPlayerTimes > _firstPlayerTimes)
+                    return $"{_secondPlayerName} Win";
+            }
 
             if (_firstPlayerTimes > 3 && Math.Abs(_firstPlayerTimes - _secondPlayerTimes) == 1)
             {
