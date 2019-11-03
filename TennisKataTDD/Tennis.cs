@@ -8,6 +8,11 @@ namespace TennisKataTDD
 
         public string GetScore()
         {
+            if (_firstPlayerTimes == 3)
+            {
+                return "Forty_Love";
+            }
+
             if (_firstPlayerTimes == 2)
             {
                 return "Thirty_Love";
