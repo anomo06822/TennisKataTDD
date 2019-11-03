@@ -17,6 +17,11 @@ namespace TennisKataTDD
                 {3, "Forty"}
             };
 
+            if (_firstPlayerTimes == _secondPlayerTimes && _firstPlayerTimes == 2)
+            {
+                return "Thirty_All";
+            }
+
             if (_firstPlayerTimes == _secondPlayerTimes && _firstPlayerTimes == 1)
             {
                 return "Fifteen_All";
