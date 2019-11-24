@@ -8,6 +8,7 @@ namespace TennisKataTDD
 
         private Dictionary<int, string> _lookupScore = new Dictionary<int, string>()
         {
+            {0, "Love"},
             {1, "Fifteen"},
             {2, "Thirty"},
             {3, "Forty"},
@@ -17,15 +18,11 @@ namespace TennisKataTDD
 
         public string GetScore()
         {
-            if (_secondPlayerTimes >= 1)
-            {
-                return $"Love_{_lookupScore[_secondPlayerTimes]}";
+            if (_firstPlayerTimes >= 1 || _secondPlayerTimes >=1){
+                return $"{_lookupScore[_firstPlayerTimes]}_{_lookupScore[_secondPlayerTimes]}";
             }
-            if (_firstPlayerTimes >= 1)
-            {
-                return $"{_lookupScore[_firstPlayerTimes]}_Love";
-            }
-            return "Love_All";
+
+            return $"{_lookupScore[_firstPlayerTimes]}_All";
         }
 
         public void FirstPlayerTimes()
