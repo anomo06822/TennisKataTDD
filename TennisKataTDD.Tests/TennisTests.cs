@@ -58,6 +58,13 @@ namespace TennisKataTDD.Tests
             ThenScoreShouldBe("Love_Thirty");
         }
 
+        [Fact]
+        public void Love_Forty()
+        {
+            GivenSecondPlayerTimes(3);
+            ThenScoreShouldBe("Love_Forty");
+        }
+
         private void GivenFirstPlayerTimes(int times)
         {
             for (int i = 0; i < times; i++)
