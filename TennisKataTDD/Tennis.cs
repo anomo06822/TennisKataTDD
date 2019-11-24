@@ -20,11 +20,12 @@ namespace TennisKataTDD
         {
             if (_firstPlayerTimes - _secondPlayerTimes ==1 && _firstPlayerTimes >= 3)
             {
-                return "FirstPlayerName_Adv";
+                return $"{GetLeaderPlayerName()}_Adv";
             }
-if (_firstPlayerTimes - _secondPlayerTimes == -1 && _secondPlayerTimes >= 3)
+
+            if (_firstPlayerTimes - _secondPlayerTimes == -1 && _secondPlayerTimes >= 3)
             {
-                return "SecondPlayerName_Adv";
+                return $"{GetLeaderPlayerName()}_Adv";
             }
 
             if (_firstPlayerTimes == _secondPlayerTimes)
@@ -41,6 +42,11 @@ if (_firstPlayerTimes - _secondPlayerTimes == -1 && _secondPlayerTimes >= 3)
             }
 
             return $"{_lookupScore[_firstPlayerTimes]}_All";
+        }
+
+        private string GetLeaderPlayerName()
+        {
+            return _firstPlayerTimes > _secondPlayerTimes ? "FirstPlayerName" : "SecondPlayerName";
         }
 
         public void FirstPlayerTimes()
