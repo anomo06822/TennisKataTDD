@@ -23,6 +23,11 @@ namespace TennisKataTDD
                 return $"{GetLeaderPlayerName()}_Win";
             }
 
+            if (_firstPlayerTimes - _secondPlayerTimes <= -2 && _secondPlayerTimes >= 4)
+            {
+                return $"{GetLeaderPlayerName()}_Win";
+            }
+
             if (_firstPlayerTimes - _secondPlayerTimes ==1 && _firstPlayerTimes >= 3)
             {
                 return $"{GetLeaderPlayerName()}_Adv";
