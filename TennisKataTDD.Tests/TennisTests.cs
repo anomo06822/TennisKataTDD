@@ -68,9 +68,21 @@ namespace TennisKataTDD.Tests
         [Fact]
         public void Fifteen_All()
         {
-            GivenFirstPlayerTimes(1);
-            GivenSecondPlayerTimes(1);
+            GivenSameTimes(1);
             ThenScoreShouldBe("Fifteen_All");
+        }
+
+        [Fact]
+        public void Thirty_All()
+        {
+            GivenSameTimes(2);
+            ThenScoreShouldBe("Thirty_All");
+        }
+
+        private void GivenSameTimes(int times)
+        {
+            GivenFirstPlayerTimes(times);
+            GivenSecondPlayerTimes(times);
         }
 
         private void GivenFirstPlayerTimes(int times)
