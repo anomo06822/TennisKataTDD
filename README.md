@@ -5,14 +5,20 @@ TDD 學習資源 :
 * [Teddy 從領域驅動設計看Tennis Kata（上）](http://teddy-chen-tw.blogspot.com/2019/02/tennis-kata.html)
 * [Teddy 從領域驅動設計看Tennis Kata（下）](http://teddy-chen-tw.blogspot.com/2019/02/tennis-kata_26.html)
 
----
+
 # Practice#10 2019/11/24
-# Practice#9
-# Practice#8  
+紀錄 : 
+* Practice#10 40分鐘完成
+---
+
+# Practice#9 2019/11/24
+紀錄 : 
+* Practice#9 50分鐘完成
+---
+
+# Practice#8 2019/11/24
 紀錄 : 
 * practice#8 1小時
-* Practice#9 50分鐘完成
-* Practice#9 40分鐘完成
 ---
 
 # Practice#7 2019/11/3
