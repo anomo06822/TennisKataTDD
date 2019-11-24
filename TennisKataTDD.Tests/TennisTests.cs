@@ -10,12 +10,22 @@ namespace TennisKataTDD.Tests
 {
     public class TennisTests
     {
+        private Tennis _tennis;
+
+        public TennisTests()
+        {
+            _tennis = new Tennis();
+        }
+
         [Fact]
         public void Love_All()
         {
-            var tennis = new Tennis();
-            var result = tennis.GetScore();
-            result.Should().Be("Love_All");
+            ThenScoreShouldBe("Love_All");
+        }
+
+        private void ThenScoreShouldBe(string score)
+        {
+            _tennis.GetScore().Should().Be(score);
         }
     }
 }
