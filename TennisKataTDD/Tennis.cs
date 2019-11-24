@@ -13,8 +13,14 @@ namespace TennisKataTDD
             {3, "Forty"},
         };
 
+        private int _secondPlayerTimes;
+
         public string GetScore()
         {
+            if (_secondPlayerTimes == 1)
+            {
+                return $"Love_{_lookupScore[_secondPlayerTimes]}";
+            }
             if (_firstPlayerTimes >= 1)
             {
                 return $"{_lookupScore[_firstPlayerTimes]}_Love";
@@ -25,6 +31,11 @@ namespace TennisKataTDD
         public void FirstPlayerTimes()
         {
             _firstPlayerTimes++;
+        }
+
+        public void SecondPlayerTimes()
+        {
+            _secondPlayerTimes++;
         }
     }
 }
