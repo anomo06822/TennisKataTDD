@@ -19,32 +19,71 @@ namespace TennisKataTDD
 
         public string GetScore()
         {
-            var differentScore = Math.Abs(_firstPlayerTimes - _secondPlayerTimes);
-
-            if (differentScore >= 2 && (_firstPlayerTimes >= 4 || _secondPlayerTimes >= 4))
+            if (IsReadyForWin())
             {
-                return $"{GetLeaderPlayerName()}_Win";
+                return GetWinScore();
             }
 
-            if (differentScore == 1 && (_firstPlayerTimes >= 3 || _secondPlayerTimes >= 3))
+            if (IsAdvantage())
             {
-                return $"{GetLeaderPlayerName()}_Adv";
+                return GetAdvantageScore();
             }
 
-            if (_firstPlayerTimes == _secondPlayerTimes)
+            if (IsDeuce())
             {
-                if (_firstPlayerTimes >= 3)
-                {
-                    return "Deuce";
-                }
-                return $"{_lookupScore[_firstPlayerTimes]}_All";
+                return GetDeuce();
             }
+            return IsSameScore() ? GetSameScore() : GetNormalScore();
+        }
 
-            if (_firstPlayerTimes >= 1 || _secondPlayerTimes >=1){
-                return $"{_lookupScore[_firstPlayerTimes]}_{_lookupScore[_secondPlayerTimes]}";
-            }
+        private string GetNormalScore()
+        {
+            return $"{_lookupScore[_firstPlayerTimes]}_{_lookupScore[_secondPlayerTimes]}";
+        }
 
+        private string GetSameScore()
+        {
             return $"{_lookupScore[_firstPlayerTimes]}_All";
+        }
+
+        private static string GetDeuce()
+        {
+            return "Deuce";
+        }
+
+        private bool IsDeuce()
+        {
+            return IsSameScore() && _firstPlayerTimes >= 3;
+        }
+
+        private bool IsSameScore()
+        {
+            return _firstPlayerTimes == _secondPlayerTimes;
+        }
+
+        private string GetAdvantageScore()
+        {
+            return $"{GetLeaderPlayerName()}_Adv";
+        }
+
+        private bool IsAdvantage()
+        {
+            return GetrDifferentScore() == 1 && (_firstPlayerTimes >= 3 || _secondPlayerTimes >= 3);
+        }
+
+        private string GetWinScore()
+        {
+            return $"{GetLeaderPlayerName()}_Win";
+        }
+
+        private bool IsReadyForWin()
+        {
+            return GetrDifferentScore() >= 2 && (_firstPlayerTimes >= 4 || _secondPlayerTimes >= 4);
+        }
+
+        private int GetrDifferentScore()
+        {
+            return Math.Abs(_firstPlayerTimes - _secondPlayerTimes);
         }
 
         private string GetLeaderPlayerName()
