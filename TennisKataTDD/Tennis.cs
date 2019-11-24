@@ -18,6 +18,11 @@ namespace TennisKataTDD
 
         public string GetScore()
         {
+            if (_firstPlayerTimes - _secondPlayerTimes ==1 && _firstPlayerTimes >= 3)
+            {
+                return "FirstPlayerName_Adv";
+            }
+
             if (_firstPlayerTimes == _secondPlayerTimes)
             {
                 if (_firstPlayerTimes >= 3)
