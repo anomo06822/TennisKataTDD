@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace TennisKataTDD
 {
@@ -18,22 +19,14 @@ namespace TennisKataTDD
 
         public string GetScore()
         {
-            if (_firstPlayerTimes - _secondPlayerTimes >= 2 && _firstPlayerTimes >= 4)
+            var differentScore = Math.Abs(_firstPlayerTimes - _secondPlayerTimes);
+
+            if (differentScore >= 2 && (_firstPlayerTimes >= 4 || _secondPlayerTimes >= 4))
             {
                 return $"{GetLeaderPlayerName()}_Win";
             }
 
-            if (_firstPlayerTimes - _secondPlayerTimes <= -2 && _secondPlayerTimes >= 4)
-            {
-                return $"{GetLeaderPlayerName()}_Win";
-            }
-
-            if (_firstPlayerTimes - _secondPlayerTimes ==1 && _firstPlayerTimes >= 3)
-            {
-                return $"{GetLeaderPlayerName()}_Adv";
-            }
-
-            if (_firstPlayerTimes - _secondPlayerTimes == -1 && _secondPlayerTimes >= 3)
+            if (differentScore == 1 && (_firstPlayerTimes >= 3 || _secondPlayerTimes >= 3))
             {
                 return $"{GetLeaderPlayerName()}_Adv";
             }
